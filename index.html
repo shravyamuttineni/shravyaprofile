@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shravya Muttineni - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #141414;
             color: white;
-            scroll-behavior: smooth; /* Enables smooth scrolling */
+            scroll-behavior: smooth;
         }
+
         header {
             display: flex;
             justify-content: space-between;
@@ -25,19 +26,23 @@
             top: 0;
             z-index: 1000;
         }
+
         header .logo {
             font-size: 24px;
             font-weight: bold;
             color: white;
         }
+
         header nav ul {
             list-style: none;
             display: flex;
             padding: 0;
         }
+
         header nav ul li {
             margin: 0 15px;
         }
+
         header nav ul li a {
             color: white;
             text-decoration: none;
@@ -46,68 +51,87 @@
         header nav ul li a:hover {
             color: #e50914;
         }
+
         .hero {
             text-align: center;
             padding: 150px 20px 50px;
             margin-top: 80px;
             background: linear-gradient(to bottom, #1e1e1e, #141414);
         }
+
         .hero img {
-            width: 250px;
-            height: 15pc;
-            border-radius: 50%;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 15px;
             margin-bottom: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
         }
-        .hero h1, .hero p {
-            animation: fadeIn 1.5s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+
         .content {
             padding: 50px 20px;
             text-align: center;
         }
+
         .content h2 {
-            margin-bottom: 20px;
             font-size: 28px;
             text-transform: uppercase;
+            margin-bottom: 20px;
             border-bottom: 2px solid #e50914;
             display: inline-block;
             padding-bottom: 5px;
         }
-        .skills, .projects, .experience {
+
+        .cards {
             display: flex;
-            justify-content: space-around;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
+
         .card {
             background-color: #222;
             border-radius: 10px;
             padding: 20px;
             width: 300px;
-            margin: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
         }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
         .card:hover {
-            transform: translateY(-10px);
+            transform: scale(1.05);
             box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
         }
+
         .contact {
-            text-align: center;
             padding: 50px 20px;
+            text-align: center;
         }
+
         .contact a {
             color: #e50914;
             text-decoration: none;
+            font-size: 16px;
         }
+
         footer {
             text-align: center;
             padding: 20px;
             background-color: black;
+        }
+
+        footer p {
+            margin: 0;
+            color: #ccc;
         }
     </style>
 </head>
@@ -126,7 +150,7 @@
     </header>
 
     <section class="hero">
-        <img src="profile.jpg" alt="Profile Picture">
+        <img src="profile.jpg" alt="profilepic">
         <h1>Hi, I'm Shravya Muttineni</h1>
         <p>Full Stack Developer | AI & ML Enthusiast</p>
     </section>
@@ -138,7 +162,7 @@
 
     <section id="skills" class="content">
         <h2>Skills</h2>
-        <div class="skills">
+        <div class="cards">
             <div class="card">
                 <h3>Frontend</h3>
                 <p>ReactJS, Angular, HTML5, CSS3, JavaScript</p>
@@ -160,7 +184,7 @@
 
     <section id="experience" class="content">
         <h2>Experience</h2>
-        <div class="experience">
+        <div class="cards">
             <div class="card">
                 <h3>CVS Health</h3>
                 <p>Software Developer (Jul 2022 - Current)</p>
@@ -178,20 +202,18 @@
 
     <section id="projects" class="content">
         <h2>Projects</h2>
-        <div class="projects">
+        <div class="cards">
             <div class="card">
                 <h3>Covid-19 Predictions</h3>
-                <p>Analyzed real-time data and created a dashboard to visualize trends.</p>
-                <p><a href="https://github.com/shravyamuttineni/covid-tracking-data" target="_blank">View Project</a></p>
+                <p>Real-time data analysis and visualization.</p>
             </div>
             <div class="card">
                 <h3>Green Fund Dashboard</h3>
-                <p>Summarized energy consumption data for efficient power utilization.</p>
-                <p><a href="https://github.com/UNCG-CSE/Hackathon-Team4" target="_blank">View Project</a></p>
+                <p>Energy consumption analysis for sustainability.</p>
             </div>
             <div class="card">
                 <h3>ML Prediction Analysis</h3>
-                <p>Implemented ML algorithms for classification and regression tasks.</p>
+                <p>Machine learning algorithms for prediction tasks.</p>
             </div>
         </div>
     </section>
@@ -204,26 +226,11 @@
     </section>
 
     <footer>
-        &copy; 2025 Shravya Muttineni. All rights reserved.
+        <p>&copy; 2025 Shravya Muttineni. All rights reserved.</p>
     </footer>
-    <script>
-        // Smooth Scroll for All Links in the Navigation Bar
-        document.querySelectorAll('header nav ul li a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-    
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
+
+
 
 
