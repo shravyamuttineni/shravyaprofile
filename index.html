@@ -37,6 +37,7 @@
             list-style: none;
             display: flex;
             padding: 0;
+            margin: 0;
         }
 
         header nav ul li {
@@ -48,6 +49,7 @@
             text-decoration: none;
             transition: color 0.3s;
         }
+
         header nav ul li a:hover {
             color: #e50914;
         }
@@ -112,15 +114,48 @@
             box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: #1e1e1e;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
         .contact {
             padding: 50px 20px;
             text-align: center;
         }
-
         .contact a {
             color: #e50914;
             text-decoration: none;
             font-size: 16px;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #e50914;
         }
 
         footer {
@@ -157,7 +192,9 @@
 
     <section id="about" class="content">
         <h2>About Me</h2>
-        <p>Dynamic full-stack developer with 4+ years of experience in designing and deploying scalable enterprise applications.</p>
+        <p>Hi, I’m Shravya Muttineni, a curious Full Stack Developer with over 4 years of experience creating user-friendly enterprise applications. I specialize in ReactJS, Angular, Java, and cloud platforms like AWS, crafting efficient and scalable solutions that bridge technology with real-world needs.
+
+            When I’m not coding, I’m exploring the world! I’m a passionate traveler, an adventure sports enthusiast, and a lifelong learner who’s always up for a challenge. Whether it’s tackling a new technology or diving into thrilling adventures, I embrace everything with energy and excitement.</p>
     </section>
 
     <section id="skills" class="content">
@@ -185,39 +222,86 @@
     <section id="experience" class="content">
         <h2>Experience</h2>
         <div class="cards">
-            <div class="card">
+            <div class="card" data-modal="modal-cvs">
                 <h3>CVS Health</h3>
                 <p>Software Developer (Jul 2022 - Current)</p>
             </div>
-            <div class="card">
+            <div class="card" data-modal="modal-infosys">
                 <h3>Infosys</h3>
                 <p>Senior Systems Engineer (Jan 2022 - Jul 2022)</p>
             </div>
-            <div class="card">
+            <div class="card" data-modal="modal-uncg">
                 <h3>UNCG</h3>
                 <p>Lecturer (Feb 2021 - Jan 2022)</p>
             </div>
         </div>
+        <div id="modal-cvs" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal-cvs')">&times;</span>
+                <h3>CVS Health</h3>
+                <p>Worked on developing scalable healthcare solutions, collaborating with cross-functional teams.</p>
+            </div>
+        </div>
+    
+        <div id="modal-infosys" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal-infosys')">&times;</span>
+                <h3>Infosys</h3>
+                <p>Optimized backend systems for enterprise solutions and led technical discussions for key projects.</p>
+            </div>
+        </div>
+    
+        <div id="modal-uncg" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal-uncg')">&times;</span>
+                <h3>UNCG</h3>
+                <p>Taught computer science courses and mentored students on advanced programming techniques.</p>
+            </div>
     </section>
 
     <section id="projects" class="content">
         <h2>Projects</h2>
         <div class="cards">
-            <div class="card">
+            <div class="card" data-modal="modal-covid">
                 <h3>Covid-19 Predictions</h3>
                 <p>Real-time data analysis and visualization.</p>
             </div>
-            <div class="card">
+            <div class="card" data-modal="modal-green-fund">
                 <h3>Green Fund Dashboard</h3>
                 <p>Energy consumption analysis for sustainability.</p>
             </div>
-            <div class="card">
+            <div class="card" data-modal="modal-ml">
                 <h3>ML Prediction Analysis</h3>
                 <p>Machine learning algorithms for prediction tasks.</p>
             </div>
         </div>
+    
+        <!-- Project Modals -->
+        <div id="modal-covid" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal-covid')">&times;</span>
+                <h3>Covid-19 Predictions</h3>
+                <p>Developed a real-time dashboard for Covid-19 data analysis and visualization, leveraging APIs and machine learning techniques.</p>
+            </div>
+        </div>
+    
+        <div id="modal-green-fund" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal-green-fund')">&times;</span>
+                <h3>Green Fund Dashboard</h3>
+                <p>Created a sustainability dashboard to monitor energy usage patterns and support energy-saving initiatives.</p>
+            </div>
+        </div>
+    
+        <div id="modal-ml" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal-ml')">&times;</span>
+                <h3>ML Prediction Analysis</h3>
+                <p>Designed and implemented machine learning models for regression and classification, improving prediction accuracy by 15%.</p>
+            </div>
+        </div>
     </section>
-
+    
     <section id="contact" class="contact">
         <h2>Contact</h2>
         <p>Email: <a href="mailto:shravya.m1803@gmail.com">shravya.m1803@gmail.com</a></p>
@@ -228,8 +312,32 @@
     <footer>
         <p>&copy; 2025 Shravya Muttineni. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function () {
+                const modalId = this.getAttribute('data-modal');
+                if (modalId) {
+                    document.getElementById(modalId).style.display = 'flex';
+                }
+            });
+        });
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
+
 
 
 
