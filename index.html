@@ -5,6 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shravya Muttineni - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #141414;
+            color: white;
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: black;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        header nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+        header nav ul li {
+            margin: 0 15px;
+        }
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        header nav ul li a:hover {
+            color: #e50914;
+        }
+        .hero {
+            text-align: center;
+            padding: 150px 20px 50px;
+            margin-top: 80px;
+            background: linear-gradient(to bottom, #1e1e1e, #141414);
+        }
+        .hero img {
+            width: 250px;
+            height: 15pc;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+        .hero h1, .hero p {
+            animation: fadeIn 1.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .content {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .content h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #e50914;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .skills, .projects, .experience {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            margin: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+        }
+        .contact {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .contact a {
+            color: #e50914;
+            text-decoration: none;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,7 +126,7 @@
     </header>
 
     <section class="hero">
-        <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+        <img src="profile.jpg" alt="Profile Picture">
         <h1>Hi, I'm Shravya Muttineni</h1>
         <p>Full Stack Developer | AI & ML Enthusiast</p>
     </section>
@@ -33,33 +138,65 @@
 
     <section id="skills" class="content">
         <h2>Skills</h2>
-        <ul>
-            <li>Frontend: ReactJS, Angular, HTML5, CSS3, JavaScript</li>
-            <li>Backend: Java, Spring Boot, Node.js</li>
-            <li>Cloud: AWS, GCP, Docker, Kubernetes</li>
-            <li>Data & ML: Python, scikit-learn, Pandas, NumPy</li>
-        </ul>
+        <div class="skills">
+            <div class="card">
+                <h3>Frontend</h3>
+                <p>ReactJS, Angular, HTML5, CSS3, JavaScript</p>
+            </div>
+            <div class="card">
+                <h3>Backend</h3>
+                <p>Java, Spring Boot, Node.js</p>
+            </div>
+            <div class="card">
+                <h3>Cloud</h3>
+                <p>AWS, GCP, Docker, Kubernetes</p>
+            </div>
+            <div class="card">
+                <h3>Data & ML</h3>
+                <p>Python, scikit-learn, Pandas, NumPy</p>
+            </div>
+        </div>
     </section>
 
     <section id="experience" class="content">
         <h2>Experience</h2>
-        <ul>
-            <li>Software Developer, CVS Health (Jul 2022 - Current)</li>
-            <li>Senior Systems Engineer, Infosys (Jan 2022 - Jul 2022)</li>
-            <li>Lecturer, UNCG (Feb 2021 - Jan 2022)</li>
-        </ul>
+        <div class="experience">
+            <div class="card">
+                <h3>CVS Health</h3>
+                <p>Software Developer (Jul 2022 - Current)</p>
+            </div>
+            <div class="card">
+                <h3>Infosys</h3>
+                <p>Senior Systems Engineer (Jan 2022 - Jul 2022)</p>
+            </div>
+            <div class="card">
+                <h3>UNCG</h3>
+                <p>Lecturer (Feb 2021 - Jan 2022)</p>
+            </div>
+        </div>
     </section>
 
     <section id="projects" class="content">
         <h2>Projects</h2>
-        <ul>
-            <li>Covid-19 Predictions and Analysis</li>
-            <li>Green Fund Hack-a-thon Dashboard</li>
-            <li>ML Prediction Analysis</li>
-        </ul>
+        <div class="projects">
+            <div class="card">
+                <h3>Covid-19 Predictions</h3>
+                <p>Analyzed real-time data and created a dashboard to visualize trends.</p>
+                <p><a href="https://github.com/shravyamuttineni/covid-tracking-data" target="_blank">View Project</a></p>
+            </div>
+            <div class="card">
+                <h3>Green Fund Dashboard</h3>
+                <p>Summarized energy consumption data for efficient power utilization.</p>
+                <p><a href="https://github.com/UNCG-CSE/Hackathon-Team4" target="_blank">View Project</a></p>
+            </div>
+            <div class="card">
+                <h3>ML Prediction Analysis</h3>
+                <p>Implemented ML algorithms for classification and regression tasks.</p>
+            </div>
+        </div>
     </section>
 
-    <section id="contact" class="content">
+    <section id="contact" class="contact">
         <h2>Contact</h2>
         <p>Email: <a href="mailto:shravya.m1803@gmail.com">shravya.m1803@gmail.com</a></p>
         <p>LinkedIn: <a href="https://www.linkedin.com/in/shravyamuttineni/" target="_blank">Profile</a></p>
@@ -69,5 +206,24 @@
     <footer>
         &copy; 2025 Shravya Muttineni. All rights reserved.
     </footer>
+    <script>
+        // Smooth Scroll for All Links in the Navigation Bar
+        document.querySelectorAll('header nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+    
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
+
+
